@@ -1,11 +1,15 @@
-const { SlashCommandBuilder } = require("discord.js");
-const wait = require('node:timers/promises').setTimeout;
+const { SlashCommandBuilder } = require('discord.js')
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('test')
-        .setDescription('test me!'),
+        .setDescription('Replies with your input!')
+        .addStringOption(option =>
+            option.setName('words')
+                .setDescription('What Itachi says back')
+                .setRequired(true)),
     async execute(interaction) {
-        await interaction.reply({ content:'test!', ephemeral:true});
+        const str = interaction.options.getString('words')
+        await interaction.channel.send({ content:`${str}`})
     }
 }
