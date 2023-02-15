@@ -25,10 +25,14 @@ module.exports = {
                 type: ChannelType.GuildCategory
             })
 
-            const channel = await category.children.create({
+            const voicechannel = await category.children.create({
                 name: '[+]', type: ChannelType.GuildVoice,
             })
-            await interaction.editReply({ content: `Category with voice channel created and at your service.`})
+
+            const textchannel = await category.children.create({
+                name: 'moonfield', type: ChannelType.GuildText,
+            })
+            await interaction.editReply({ content: `Category with voice & text channel created and at your service.`})
         } else {
             await interaction.reply({content: `Category is already created. I don't want to create one more. That would be stupid waste of chakra..`, ephemeral: true,})
         }
