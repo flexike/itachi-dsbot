@@ -24,8 +24,10 @@ module.exports = {
         .setName('hey')
         .setDescription('Just being friendly and say hi + random quote'),
     async execute(interaction) {
-        await interaction.reply({ content:'Hello there!'});
-        await wait(2500);
-        await interaction.followUp(`"_${quote}_" - Itachi Uchiha AKA me.`)
+        try {
+            await interaction.reply({content: 'Hello there!'});
+            await wait(2500);
+            await interaction.followUp(`"_${quote}_" - Itachi Uchiha AKA me.`)
+        }catch(e) {console.log(e.message)}
     }
 }

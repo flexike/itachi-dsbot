@@ -56,6 +56,8 @@ module.exports = {
 
 
     async execute(interaction) {
+
+        try{
         const EMBtitle = interaction.options.getString('title')
         const EMBdescription = interaction.options.getString('description')
         const EMBcategory = interaction.options.getString('mode')
@@ -176,5 +178,6 @@ module.exports = {
 
             await interaction.followUp({embeds: [embedSum], fetchReply: true})
         }
+    }catch(e) {console.log(e.message)}
     }
 }

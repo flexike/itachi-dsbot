@@ -15,6 +15,7 @@ module.exports = {
         .setDescription(`Spawn Itachi's moonfield`),
 
     async execute(interaction) {
+        try{
         await interaction.guild.channels.fetch()
         const categoryExist = await interaction.guild.channels.cache.find(c => c.name === `Itachi`)
 
@@ -36,5 +37,6 @@ module.exports = {
         } else {
             await interaction.reply({content: `Category is already created. I don't want to create one more. That would be stupid waste of chakra..`, ephemeral: true,})
         }
+        }catch(e) {console.log(e.message)}
     }
 }

@@ -9,7 +9,11 @@ module.exports = {
                 .setDescription('What Itachi must say')
                 .setRequired(true)),
     async execute(interaction) {
-        const str = interaction.options.getString('words')
-        await interaction.channel.send({ content:`${str}`})
+        try {
+            const str = interaction.options.getString('words')
+            await interaction.channel.send({content: `${str}`})
+        } catch (e) {
+            console.log(e.message)
+        }
     }
 }
