@@ -16,6 +16,7 @@ const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     name: Events.MessageReactionAdd,
     async execute(reaction, user) {
+        try{
 
         const channel = await reaction.message.guild.channels.cache.find(c => c.name === 'moonfield')
         const allRoles = await reaction.message.guild.roles.cache.map(c => c.id)
@@ -95,5 +96,7 @@ module.exports = {
                 }
             }
         }
+    }
+        catch(e) {console.log(e.message)}
     }
 }
